@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sp_settings/fields/settings_field.dart';
 
 /// Instance of [SettingsField] embedded in an [InkWell].
-class SwitchSettingsField extends StatefulWidget {
+class ButtonSettingsField extends StatefulWidget {
   /// Settings field child.
   final SettingsField settingsField;
 
@@ -16,7 +16,7 @@ class SwitchSettingsField extends StatefulWidget {
   /// Callback for long press.
   final void Function()? onLongPress;
 
-  const SwitchSettingsField({
+  const ButtonSettingsField({
     Key? key,
     required this.settingsField,
     required this.prefKey,
@@ -25,10 +25,10 @@ class SwitchSettingsField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<SwitchSettingsField> createState() => _SwitchSettingsFieldState();
+  State<ButtonSettingsField> createState() => _ButtonSettingsFieldState();
 }
 
-class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
+class _ButtonSettingsFieldState extends State<ButtonSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
