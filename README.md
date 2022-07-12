@@ -17,25 +17,26 @@ Add `sp_settings` to your project: `flutter pub add sp_settings`
 The following example is a basic hierarchy for a settings screen.
 
 ```dart
-import 'package:sp_settings/settings_form.dart';
 import 'package:sp_settings/settings_category.dart';
 import 'package:sp_settings/fields/settings_field.dart';
 import 'package:sp_settings/fields/switch_settings_field.dart';
 
-SettingsForm(
-    categories: [
+ListView(
+    children: [
         SettingsCategory(
             title: 'General',
-            fields: [
-                SwitchSettingsField(
-                    settingsField: SettingsField(
-                        title: 'Example',
-                        description: 'This is an example.',
-                        icon: Icons.add,
+            settingsList: SettingsList(
+                fields: [
+                    SwitchSettingsField(
+                        settingsField: SettingsField(
+                            title: 'Example',
+                            description: 'This is an example.',
+                            icon: Icons.add,
+                        ),
+                        prefKey: 'example1',
                     ),
-                    prefKey: 'example1',
-                ),
-            ],
+                ]
+            ),
         ),
     ],
 );

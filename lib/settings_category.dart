@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/settings_list.dart';
 
-/// A single category to hold instances of [SettingsField].
+/// A single category to hold a [SettingsList].
 class SettingsCategory extends StatelessWidget {
   /// Title of the category.
   final String title;
 
   /// List of type [SettingsField].
-  final List<Widget> fields;
+  final SettingsList settingsList;
 
   const SettingsCategory({
     Key? key,
     required this.title,
-    required this.fields,
+    required this.settingsList,
   }) : super(key: key);
 
   @override
@@ -21,21 +22,16 @@ class SettingsCategory extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(12),
           child: Text(
             title,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
+              fontSize: 16,
             ),
           ),
         ),
-        ListView.separated(
-          shrinkWrap: true,
-          itemBuilder: (context, index) => fields[index],
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: fields.length,
-        ),
+        settingsList,
       ],
     );
   }
