@@ -30,7 +30,7 @@ class _SettingsFieldState extends State<SettingsField> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // 32px icon, centered
+          // 32px icon, centered.
           if (widget.icon != null)
             Padding(
               padding: const EdgeInsets.only(right: 16),
@@ -41,7 +41,7 @@ class _SettingsFieldState extends State<SettingsField> {
             )
           else
             Container(),
-          // Title and description stacked vertically
+          // Title and description stacked vertically.
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

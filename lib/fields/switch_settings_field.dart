@@ -43,7 +43,7 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
     }
   }
 
-  /// Store [_currentValue] and set the state.
+  /// Store [newValue] and set the state.
   Future<void> _setValue(bool newValue) async {
     final sharedPrefs = await SharedPreferences.getInstance();
 

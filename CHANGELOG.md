@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Add tests
+
 ## 1.0.3
 
 * Replace DropdownSettingsField with PopupSettingsField.

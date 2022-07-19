@@ -1,6 +1,6 @@
 name: sp_settings
 description: A Flutter settings screen package with Shared Preferences integration.
-version: 1.0.3
+version: 1.0.4
 repository: https://www.github.com/tytydraco/sp_settings
 
 environment:
@@ -13,6 +13,8 @@ dependencies:
   shared_preferences: ^2.0.15
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
