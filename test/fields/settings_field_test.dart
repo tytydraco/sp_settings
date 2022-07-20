@@ -5,15 +5,17 @@ import 'package:sp_settings/fields/settings_field.dart';
 void main() {
   group('Settings field', () {
     testWidgets('All fields', (widgetTester) async {
-      await widgetTester.pumpWidget(const Material(
-        child: MaterialApp(
-          home: SettingsField(
-            title: 'Example title',
-            description: 'Example description',
-            icon: Icons.abc,
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: SettingsField(
+              title: 'Example title',
+              description: 'Example description',
+              icon: Icons.abc,
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.text('Example title'), findsOneWidget);
       expect(find.text('Example description'), findsOneWidget);
@@ -21,14 +23,16 @@ void main() {
     });
 
     testWidgets('Without description', (widgetTester) async {
-      await widgetTester.pumpWidget(const Material(
-        child: MaterialApp(
-          home: SettingsField(
-            title: 'Example title',
-            icon: Icons.abc,
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: SettingsField(
+              title: 'Example title',
+              icon: Icons.abc,
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.text('Example title'), findsOneWidget);
       expect(find.byIcon(Icons.abc), findsOneWidget);
@@ -36,14 +40,16 @@ void main() {
     });
 
     testWidgets('Without icon', (widgetTester) async {
-      await widgetTester.pumpWidget(const Material(
-        child: MaterialApp(
-          home: SettingsField(
-            title: 'Example title',
-            description: 'Example description',
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: SettingsField(
+              title: 'Example title',
+              description: 'Example description',
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.text('Example title'), findsOneWidget);
       expect(find.text('Example description'), findsOneWidget);
@@ -51,13 +57,15 @@ void main() {
     });
 
     testWidgets('Without icon or description', (widgetTester) async {
-      await widgetTester.pumpWidget(const Material(
-        child: MaterialApp(
-          home: SettingsField(
-            title: 'Example title',
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: SettingsField(
+              title: 'Example title',
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.text('Example title'), findsOneWidget);
       expect(find.byType(Icon), findsNothing);

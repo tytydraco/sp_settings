@@ -4,6 +4,17 @@ import 'package:sp_settings/fields/settings_field.dart';
 
 /// Instance of [SettingsField] with an embedded [PopupMenuButton].
 class PopupSettingsField extends StatefulWidget {
+  /// Create a new [PopupSettingsField] given a base [settingsField] and
+  /// [prefKey].
+  const PopupSettingsField({
+    super.key,
+    required this.settingsField,
+    required this.prefKey,
+    this.initialValue,
+    required this.items,
+    this.onChanged,
+  });
+
   /// Settings field child.
   final SettingsField settingsField;
 
@@ -19,21 +30,12 @@ class PopupSettingsField extends StatefulWidget {
   /// Callback for when selection changes.
   final void Function(String value)? onChanged;
 
-  const PopupSettingsField({
-    Key? key,
-    required this.settingsField,
-    required this.prefKey,
-    this.initialValue,
-    required this.items,
-    this.onChanged,
-  }) : super(key: key);
-
   @override
   State<PopupSettingsField> createState() => _PopupSettingsFieldState();
 }
 
 class _PopupSettingsFieldState extends State<PopupSettingsField> {
-  final _popupMenuState = GlobalKey<PopupMenuButtonState>();
+  final _popupMenuState = GlobalKey<PopupMenuButtonState<String>>();
   late String? _currentValue = widget.initialValue;
 
   /// Retrieve [_currentValue] and set the state.
@@ -50,7 +52,7 @@ class _PopupSettingsFieldState extends State<PopupSettingsField> {
   /// Store [_currentValue] and set the state.
   Future<void> _setValue(String newValue) async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    sharedPrefs.setString(widget.prefKey, newValue);
+    await sharedPrefs.setString(widget.prefKey, newValue);
     setState(() {
       _currentValue = newValue;
     });
@@ -71,9 +73,9 @@ class _PopupSettingsFieldState extends State<PopupSettingsField> {
     );
   }
 
-  /// Convert the [items] to a list of type [PopupMenuItem].
+  /// Convert the menu items into a list of type [PopupMenuItem].
   List<PopupMenuItem<String>> _menuItems() =>
-      widget.items.keys.map((key) => _popupMenuItem(key)).toList();
+      widget.items.keys.map(_popupMenuItem).toList();
 
   @override
   void initState() {

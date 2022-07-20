@@ -3,6 +3,14 @@ import 'package:sp_settings/fields/settings_field.dart';
 
 /// Instance of [SettingsField] embedded in an [InkWell].
 class ButtonSettingsField extends StatefulWidget {
+  /// Create a new [ButtonSettingsField] given a base [settingsField].
+  const ButtonSettingsField({
+    super.key,
+    required this.settingsField,
+    this.onTap,
+    this.onLongPress,
+  });
+
   /// Settings field child.
   final SettingsField settingsField;
 
@@ -11,13 +19,6 @@ class ButtonSettingsField extends StatefulWidget {
 
   /// Callback for long press.
   final void Function()? onLongPress;
-
-  const ButtonSettingsField({
-    Key? key,
-    required this.settingsField,
-    this.onTap,
-    this.onLongPress,
-  }) : super(key: key);
 
   @override
   State<ButtonSettingsField> createState() => _ButtonSettingsFieldState();

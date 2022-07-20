@@ -4,17 +4,18 @@ import 'package:sp_settings/settings_list.dart';
 
 /// A single category to hold a [SettingsList].
 class SettingsCategory extends StatelessWidget {
+  /// Create a new [SettingsCategory] given a [title] and a [settingsList].
+  const SettingsCategory({
+    super.key,
+    required this.title,
+    required this.settingsList,
+  });
+
   /// Title of the category.
   final String title;
 
   /// List of type [SettingsField].
   final SettingsList settingsList;
-
-  const SettingsCategory({
-    Key? key,
-    required this.title,
-    required this.settingsList,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

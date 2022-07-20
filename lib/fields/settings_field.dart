@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 
 /// Base settings field with just the required fields.
 class SettingsField extends StatefulWidget {
+  /// Create a new [SettingsField] given a [title].
+  const SettingsField({
+    super.key,
+    this.icon,
+    required this.title,
+    this.description,
+  });
+
   /// Icon data to use.
   final IconData? icon;
 
@@ -10,13 +18,6 @@ class SettingsField extends StatefulWidget {
 
   /// Single-line description.
   final String? description;
-
-  const SettingsField({
-    Key? key,
-    this.icon,
-    required this.title,
-    this.description,
-  }) : super(key: key);
 
   @override
   State<SettingsField> createState() => _SettingsFieldState();
@@ -28,14 +29,13 @@ class _SettingsFieldState extends State<SettingsField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           // 32px icon, centered.
           if (widget.icon != null)
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: Icon(
-                widget.icon!,
+                widget.icon,
                 size: 32,
               ),
             )

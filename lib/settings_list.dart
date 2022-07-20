@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sp_settings/fields/settings_field.dart';
 
 /// A vertical, separated list of [SettingsField].
 class SettingsList extends StatelessWidget {
+  /// Create a new [SettingsList] given a list of [fields].
+  const SettingsList({
+    super.key,
+    required this.fields,
+  });
+
   /// List of type [SettingsField].
   final List<Widget> fields;
-
-  const SettingsList({
-    Key? key,
-    required this.fields,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

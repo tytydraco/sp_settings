@@ -4,6 +4,16 @@ import 'package:sp_settings/fields/settings_field.dart';
 
 /// Instance of [SettingsField] with a trailing [Switch].
 class SwitchSettingsField extends StatefulWidget {
+  /// Create a new [SwitchSettingsField] given a base [settingsField] and
+  /// [prefKey].
+  const SwitchSettingsField({
+    super.key,
+    required this.settingsField,
+    required this.prefKey,
+    this.initialValue = false,
+    this.onChanged,
+  });
+
   /// Settings field child.
   final SettingsField settingsField;
 
@@ -16,14 +26,6 @@ class SwitchSettingsField extends StatefulWidget {
   /// Callback for when selection changes.
   final void Function(bool value)? onChanged;
 
-  const SwitchSettingsField({
-    Key? key,
-    required this.settingsField,
-    required this.prefKey,
-    this.initialValue = false,
-    this.onChanged,
-  }) : super(key: key);
-
   @override
   State<SwitchSettingsField> createState() => _SwitchSettingsFieldState();
 }
@@ -34,7 +36,6 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
   /// Retrieve [_currentValue] and set the state.
   Future<void> _updateValue() async {
     final sharedPrefs = await SharedPreferences.getInstance();
-
     final newValue = sharedPrefs.getBool(widget.prefKey);
     if (newValue != _currentValue && newValue != null) {
       setState(() {
@@ -46,8 +47,7 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
   /// Store [newValue] and set the state.
   Future<void> _setValue(bool newValue) async {
     final sharedPrefs = await SharedPreferences.getInstance();
-
-    sharedPrefs.setBool(widget.prefKey, newValue);
+    await sharedPrefs.setBool(widget.prefKey, newValue);
     setState(() {
       _currentValue = newValue;
     });

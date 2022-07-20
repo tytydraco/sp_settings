@@ -14,13 +14,15 @@ const testSettingsField = SettingsField(
 void main() {
   group('Switch settings field', () {
     testWidgets('Field', (widgetTester) async {
-      await widgetTester.pumpWidget(const Material(
-        child: MaterialApp(
-          home: ButtonSettingsField(
-            settingsField: testSettingsField,
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: ButtonSettingsField(
+              settingsField: testSettingsField,
+            ),
           ),
         ),
-      ));
+      );
 
       expect(find.text(testSettingsField.title), findsOneWidget);
       expect(find.text(testSettingsField.description!), findsOneWidget);
@@ -28,39 +30,41 @@ void main() {
     });
 
     testWidgets('On tap callback', (widgetTester) async {
-      final completer = Completer();
+      final completer = Completer<void>();
 
-      await widgetTester.pumpWidget(Material(
-        child: MaterialApp(
-          home: ButtonSettingsField(
-            settingsField: testSettingsField,
-            onTap: completer.complete,
+      await widgetTester.pumpWidget(
+        Material(
+          child: MaterialApp(
+            home: ButtonSettingsField(
+              settingsField: testSettingsField,
+              onTap: completer.complete,
+            ),
           ),
         ),
-      ));
+      );
 
       await widgetTester.tap(find.byType(InkWell));
 
-      expect(completer.isCompleted, isTrue);
-      expect(await completer.future, isNull);
+      await expectLater(completer.future, completes);
     });
 
     testWidgets('On long press callback', (widgetTester) async {
-      final completer = Completer();
+      final completer = Completer<void>();
 
-      await widgetTester.pumpWidget(Material(
-        child: MaterialApp(
-          home: ButtonSettingsField(
-            settingsField: testSettingsField,
-            onLongPress: completer.complete,
+      await widgetTester.pumpWidget(
+        Material(
+          child: MaterialApp(
+            home: ButtonSettingsField(
+              settingsField: testSettingsField,
+              onLongPress: completer.complete,
+            ),
           ),
         ),
-      ));
+      );
 
       await widgetTester.longPress(find.byType(InkWell));
 
-      expect(completer.isCompleted, isTrue);
-      expect(await completer.future, isNull);
+      await expectLater(completer.future, completes);
     });
   });
 }

@@ -4,11 +4,15 @@ import 'package:sp_settings/settings_list.dart';
 
 void main() {
   testWidgets('Settings list field', (widgetTester) async {
-    await widgetTester.pumpWidget(const MaterialApp(
-      home: SettingsList(fields: [
-        Text('example field'),
-      ]),
-    ));
+    await widgetTester.pumpWidget(
+      const MaterialApp(
+        home: SettingsList(
+          fields: [
+            Text('example field'),
+          ],
+        ),
+      ),
+    );
 
     expect(find.text('example field'), findsOneWidget);
   });
