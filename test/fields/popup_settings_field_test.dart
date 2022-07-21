@@ -99,7 +99,7 @@ void main() {
       await widgetTester.pumpAndSettle();
 
       expect(completer.isCompleted, isTrue);
-      expect(await completer.future, equals('d'));
+      expect(await completer.future, 'd');
     });
 
     testWidgets('Switch state changed', (widgetTester) async {
@@ -169,7 +169,7 @@ void main() {
 
       expect(
         (await SharedPreferences.getInstance()).getString('example'),
-        equals('d'),
+        'd',
       );
     });
   });
