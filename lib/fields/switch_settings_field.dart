@@ -6,9 +6,9 @@ import 'package:sp_settings/fields/settings_field.dart';
 class SwitchSettingsField extends StatefulWidget {
   /// Create a new [SwitchSettingsField] given a base [settingsField] and
   /// [prefKey].
-  const SwitchSettingsField({
+  const SwitchSettingsField(
+    this.settingsField, {
     super.key,
-    required this.settingsField,
     required this.prefKey,
     this.initialValue = false,
     this.onChanged,

@@ -21,7 +21,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: PopupSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               items: {},
             ),
@@ -41,7 +41,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: PopupSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               items: {
                 'a': 'a',
@@ -78,7 +78,7 @@ void main() {
         Material(
           child: MaterialApp(
             home: PopupSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               items: const {
                 'a': 'a',
@@ -109,7 +109,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: PopupSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               items: {
                 'a': 'a',
@@ -148,7 +148,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: PopupSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               items: {
                 'a': 'a',

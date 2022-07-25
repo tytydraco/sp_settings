@@ -17,9 +17,7 @@ void main() {
       await widgetTester.pumpWidget(
         const Material(
           child: MaterialApp(
-            home: ButtonSettingsField(
-              settingsField: testSettingsField,
-            ),
+            home: ButtonSettingsField(testSettingsField),
           ),
         ),
       );
@@ -36,7 +34,7 @@ void main() {
         Material(
           child: MaterialApp(
             home: ButtonSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               onTap: completer.complete,
             ),
           ),
@@ -55,7 +53,7 @@ void main() {
         Material(
           child: MaterialApp(
             home: ButtonSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               onLongPress: completer.complete,
             ),
           ),

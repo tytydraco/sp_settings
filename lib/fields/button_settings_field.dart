@@ -4,9 +4,9 @@ import 'package:sp_settings/fields/settings_field.dart';
 /// Instance of [SettingsField] embedded in an [InkWell].
 class ButtonSettingsField extends StatefulWidget {
   /// Create a new [ButtonSettingsField] given a base [settingsField].
-  const ButtonSettingsField({
+  const ButtonSettingsField(
+    this.settingsField, {
     super.key,
-    required this.settingsField,
     this.onTap,
     this.onLongPress,
   });

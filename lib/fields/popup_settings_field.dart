@@ -6,9 +6,9 @@ import 'package:sp_settings/fields/settings_field.dart';
 class PopupSettingsField extends StatefulWidget {
   /// Create a new [PopupSettingsField] given a base [settingsField] and
   /// [prefKey].
-  const PopupSettingsField({
+  const PopupSettingsField(
+    this.settingsField, {
     super.key,
-    required this.settingsField,
     required this.prefKey,
     this.initialValue,
     required this.items,

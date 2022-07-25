@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: 'General',
               settingsList: SettingsList([
                 SwitchSettingsField(
-                  settingsField: SettingsField(
+                  SettingsField(
                     title: 'Example',
                     description: 'This is an example.',
                     icon: Icons.add,
@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
             title: 'Other',
             settingsList: SettingsList([
               const SwitchSettingsField(
-                settingsField: SettingsField(
+                SettingsField(
                   title: 'Long text switch',
                   description:
                       'This is an example. The description is a lot longer. It is very very long. It reaches three lines.',
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 prefKey: 'example2',
               ),
               ButtonSettingsField(
-                settingsField: const SettingsField(
+                const SettingsField(
                   title: 'Clickable',
                   description: 'Here is a button setting that can be clicked.',
                   icon: Icons.person_off,
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {},
               ),
               const PopupSettingsField(
-                settingsField: SettingsField(
+                SettingsField(
                   title: 'Pop-up',
                   description: 'Here is a pop-up menu! Select one of these.',
                   icon: Icons.drive_eta,

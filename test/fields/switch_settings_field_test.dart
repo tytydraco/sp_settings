@@ -21,7 +21,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: SwitchSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
             ),
           ),
@@ -40,7 +40,7 @@ void main() {
         const Material(
           child: MaterialApp(
             home: SwitchSettingsField(
-              settingsField: testSettingsField,
+              testSettingsField,
               prefKey: 'example',
               initialValue: true,
             ),
@@ -65,8 +65,8 @@ void main() {
         Material(
           child: MaterialApp(
             home: SwitchSettingsField(
+              testSettingsField,
               prefKey: 'example',
-              settingsField: testSettingsField,
               onChanged: completer.complete,
             ),
           ),
@@ -86,8 +86,8 @@ void main() {
         const Material(
           child: MaterialApp(
             home: SwitchSettingsField(
+              testSettingsField,
               prefKey: 'example',
-              settingsField: testSettingsField,
             ),
           ),
         ),
@@ -111,8 +111,8 @@ void main() {
         const Material(
           child: MaterialApp(
             home: SwitchSettingsField(
+              testSettingsField,
               prefKey: 'example',
-              settingsField: testSettingsField,
             ),
           ),
         ),
