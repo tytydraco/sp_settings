@@ -9,7 +9,7 @@ void main() {
       const MaterialApp(
         home: SettingsCategory(
           title: 'Title',
-          settingsList: SettingsList(fields: []),
+          settingsList: SettingsList([]),
         ),
       ),
     );

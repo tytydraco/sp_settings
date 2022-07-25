@@ -6,11 +6,9 @@ void main() {
   testWidgets('Settings list field', (widgetTester) async {
     await widgetTester.pumpWidget(
       const MaterialApp(
-        home: SettingsList(
-          fields: [
-            Text('example field'),
-          ],
-        ),
+        home: SettingsList([
+          Text('example field'),
+        ]),
       ),
     );
 

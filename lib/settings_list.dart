@@ -4,9 +4,9 @@ import 'package:sp_settings/fields/settings_field.dart';
 /// A vertical, separated list of [SettingsField].
 class SettingsList extends StatelessWidget {
   /// Create a new [SettingsList] given a list of [fields].
-  const SettingsList({
+  const SettingsList(
+    this.fields, {
     super.key,
-    required this.fields,
   });
 
   /// List of type [SettingsField].
