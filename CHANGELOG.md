@@ -1,3 +1,8 @@
+## 1.0.7
+
+* Add checkbox field
+* Add enable toggle to popup, switch, and checkbox fields
+
 ## 1.0.6
 
 * Use positional parameters when appropriate

@@ -1,6 +1,6 @@
 name: sp_settings
 description: A Flutter settings screen package with Shared Preferences integration.
-version: 1.0.6
+version: 1.0.7
 repository: https://www.github.com/tytydraco/sp_settings
 
 environment:
