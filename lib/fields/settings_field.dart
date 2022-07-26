@@ -5,16 +5,16 @@ class SettingsField extends StatefulWidget {
   /// Create a new [SettingsField] given a [title].
   const SettingsField({
     super.key,
-    this.icon,
     required this.title,
+    this.icon,
     this.description,
   });
 
-  /// Icon data to use.
-  final IconData? icon;
-
   /// Display label.
   final String title;
+
+  /// Icon data to use.
+  final IconData? icon;
 
   /// Single-line description.
   final String? description;
