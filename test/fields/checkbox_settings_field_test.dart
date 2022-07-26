@@ -163,5 +163,31 @@ void main() {
         isNull,
       );
     });
+
+    testWidgets('Checkbox state changed when disabled', (widgetTester) async {
+      SharedPreferences.setMockInitialValues({'example': false});
+
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: CheckboxSettingsField(
+              testSettingsField,
+              prefKey: 'example',
+              enabled: false,
+            ),
+          ),
+        ),
+      );
+
+      await widgetTester.tap(find.byType(Checkbox));
+      await widgetTester.pumpAndSettle();
+
+      expect(
+        find.byWidgetPredicate(
+          (widget) => widget is Checkbox && widget.value == false,
+        ),
+        findsOneWidget,
+      );
+    });
   });
 }

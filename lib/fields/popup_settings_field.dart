@@ -10,6 +10,7 @@ class PopupSettingsField extends StatefulWidget {
     this.settingsField, {
     super.key,
     required this.prefKey,
+    this.enabled = true,
     this.initialValue,
     required this.items,
     this.onChanged,
@@ -20,6 +21,9 @@ class PopupSettingsField extends StatefulWidget {
 
   /// Preference key to store value in.
   final String prefKey;
+
+  /// Allow this field's value to be mutated.
+  final bool enabled;
 
   /// Initial value to set.
   final String? initialValue;
@@ -86,7 +90,9 @@ class _PopupSettingsFieldState extends State<PopupSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _popupMenuState.currentState?.showButtonMenu(),
+      onTap: widget.enabled
+          ? () => _popupMenuState.currentState?.showButtonMenu()
+          : null,
       child: Row(
         children: [
           Expanded(
@@ -96,6 +102,7 @@ class _PopupSettingsFieldState extends State<PopupSettingsField> {
             key: _popupMenuState,
             itemBuilder: (context) => _menuItems(),
             onSelected: _setValue,
+            enabled: widget.enabled,
           ),
         ],
       ),

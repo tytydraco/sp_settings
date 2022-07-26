@@ -10,6 +10,7 @@ class CheckboxSettingsField extends StatefulWidget {
     this.settingsField, {
     super.key,
     required this.prefKey,
+    this.enabled = true,
     this.initialValue = false,
     this.tristate = false,
     this.onChanged,
@@ -20,6 +21,9 @@ class CheckboxSettingsField extends StatefulWidget {
 
   /// Preference key to store value in.
   final String prefKey;
+
+  /// Allow this field's value to be mutated.
+  final bool enabled;
 
   /// Initial value to set.
   final bool? initialValue;
@@ -87,7 +91,9 @@ class _CheckboxSettingsFieldState extends State<CheckboxSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _setValue(_getNextTristate(_currentValue)),
+      onTap: widget.enabled
+          ? () => _setValue(_getNextTristate(_currentValue))
+          : null,
       child: Row(
         children: [
           Expanded(
@@ -95,7 +101,7 @@ class _CheckboxSettingsFieldState extends State<CheckboxSettingsField> {
           ),
           Checkbox(
             value: _currentValue,
-            onChanged: _setValue,
+            onChanged: widget.enabled ? _setValue : null,
             tristate: widget.tristate,
           ),
         ],

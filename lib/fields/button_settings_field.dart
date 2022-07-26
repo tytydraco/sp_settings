@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sp_settings/fields/settings_field.dart';
 
-/// Instance of [SettingsField] embedded in an [InkWell].
+/// Instance of [SettingsField] embedded in an [InkWell]. The button will be
+/// disabled if both callbacks are set to null.
 class ButtonSettingsField extends StatefulWidget {
   /// Create a new [ButtonSettingsField] given a base [settingsField].
   const ButtonSettingsField(

@@ -102,7 +102,7 @@ void main() {
       expect(await completer.future, 'd');
     });
 
-    testWidgets('Switch state changed', (widgetTester) async {
+    testWidgets('Popup state changed', (widgetTester) async {
       SharedPreferences.setMockInitialValues({'example': 'c'});
 
       await widgetTester.pumpWidget(
@@ -171,6 +171,34 @@ void main() {
         (await SharedPreferences.getInstance()).getString('example'),
         'd',
       );
+    });
+
+    testWidgets('Open when disabled', (widgetTester) async {
+      SharedPreferences.setMockInitialValues({'example': 'c'});
+
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: PopupSettingsField(
+              testSettingsField,
+              prefKey: 'example',
+              items: {
+                'a': 'a',
+                'b': 'b',
+                'c': 'c',
+                'd': 'd',
+              },
+              initialValue: 'c',
+              enabled: false,
+            ),
+          ),
+        ),
+      );
+
+      await widgetTester.tap(find.byType(PopupMenuButton<String>));
+      await widgetTester.pumpAndSettle();
+
+      expect(find.text('d'), findsNothing);
     });
   });
 }

@@ -10,6 +10,7 @@ class SwitchSettingsField extends StatefulWidget {
     this.settingsField, {
     super.key,
     required this.prefKey,
+    this.enabled = true,
     this.initialValue = false,
     this.onChanged,
   });
@@ -19,6 +20,9 @@ class SwitchSettingsField extends StatefulWidget {
 
   /// Preference key to store value in.
   final String prefKey;
+
+  /// Allow this field's value to be mutated.
+  final bool enabled;
 
   /// Initial value to set.
   final bool initialValue;
@@ -64,7 +68,7 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _setValue(!_currentValue),
+      onTap: widget.enabled ? () => _setValue(!_currentValue) : null,
       child: Row(
         children: [
           Expanded(
@@ -72,7 +76,7 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
           ),
           Switch(
             value: _currentValue,
-            onChanged: _setValue,
+            onChanged: widget.enabled ? _setValue : null,
           ),
         ],
       ),

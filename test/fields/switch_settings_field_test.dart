@@ -125,5 +125,31 @@ void main() {
         isTrue,
       );
     });
+
+    testWidgets('Switch state changed when disabled', (widgetTester) async {
+      SharedPreferences.setMockInitialValues({'example': false});
+
+      await widgetTester.pumpWidget(
+        const Material(
+          child: MaterialApp(
+            home: SwitchSettingsField(
+              testSettingsField,
+              prefKey: 'example',
+              enabled: false,
+            ),
+          ),
+        ),
+      );
+
+      await widgetTester.tap(find.byType(Switch));
+      await widgetTester.pumpAndSettle();
+
+      expect(
+        find.byWidgetPredicate(
+          (widget) => widget is Switch && widget.value == false,
+        ),
+        findsOneWidget,
+      );
+    });
   });
 }
