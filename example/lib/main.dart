@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sp_settings/fields/button_settings_field.dart';
+import 'package:sp_settings/fields/checkbox_settings_field.dart';
 import 'package:sp_settings/fields/popup_settings_field.dart';
 import 'package:sp_settings/settings_category.dart';
 import 'package:sp_settings/fields/settings_field.dart';
@@ -88,6 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Lemon': 'l',
                   'Strawberry': 's',
                 },
+              ),
+              const CheckboxSettingsField(
+                SettingsField(
+                  title: 'Tristate checkbox',
+                  description: 'This has three options to choose from.',
+                  icon: Icons.indeterminate_check_box,
+                ),
+                tristate: true,
+                prefKey: 'tristate2',
               ),
             ]),
           )
