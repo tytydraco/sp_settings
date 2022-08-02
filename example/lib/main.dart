@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sp_settings/fields/button_settings_field.dart';
-import 'package:sp_settings/fields/checkbox_settings_field.dart';
-import 'package:sp_settings/fields/popup_settings_field.dart';
-import 'package:sp_settings/settings_category.dart';
-import 'package:sp_settings/fields/settings_field.dart';
-import 'package:sp_settings/fields/switch_settings_field.dart';
-import 'package:sp_settings/settings_list.dart';
+import 'package:sp_settings/sp_settings.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/src/fields/settings_field.dart';
 
 /// Instance of [SettingsField] with a trailing [Checkbox].
 class CheckboxSettingsField extends StatefulWidget {

@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sp_settings/fields/button_settings_field.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/sp_settings.dart';
 
 const testSettingsField = SettingsField(
   title: 'Example title',

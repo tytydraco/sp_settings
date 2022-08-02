@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/src/fields/settings_field.dart';
 
 /// Instance of [SettingsField] embedded in an [InkWell]. The button will be
 /// disabled if both callbacks are set to null.

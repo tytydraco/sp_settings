@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/src/fields/settings_field.dart';
 
 /// A vertical, separated list of [SettingsField].
 class SettingsList extends StatelessWidget {

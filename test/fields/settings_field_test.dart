@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/sp_settings.dart';
 
 void main() {
   group('Settings field', () {

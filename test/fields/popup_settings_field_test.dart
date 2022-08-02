@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sp_settings/fields/popup_settings_field.dart';
-import 'package:sp_settings/fields/settings_field.dart';
+import 'package:sp_settings/sp_settings.dart';
 
 const testSettingsField = SettingsField(
   title: 'Example title',

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sp_settings/settings_list.dart';
+import 'package:sp_settings/src/settings_list.dart';
 
 void main() {
   testWidgets('Settings list field', (widgetTester) async {

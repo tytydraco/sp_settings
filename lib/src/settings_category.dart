@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sp_settings/fields/settings_field.dart';
-import 'package:sp_settings/settings_list.dart';
+import 'package:sp_settings/src/fields/settings_field.dart';
+import 'package:sp_settings/src/settings_list.dart';
 
 /// A single category to hold a [SettingsList].
 class SettingsCategory extends StatelessWidget {
