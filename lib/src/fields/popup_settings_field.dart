@@ -40,15 +40,18 @@ class PopupSettingsField extends StatefulWidget {
 
 class _PopupSettingsFieldState extends State<PopupSettingsField> {
   final _popupMenuState = GlobalKey<PopupMenuButtonState<String>>();
-  late String? _currentValue = widget.initialValue;
+  var _hasValue = false;
+  late var _currentValue = widget.initialValue;
 
   /// Retrieve [_currentValue] and set the state.
   Future<void> _updateValue() async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    final newValue = sharedPrefs.getString(widget.prefKey);
-    if (newValue != _currentValue && newValue != null) {
+    final newValue =
+        sharedPrefs.getString(widget.prefKey) ?? widget.initialValue;
+    if (newValue != _currentValue || !_hasValue) {
       setState(() {
         _currentValue = newValue;
+        _hasValue = true;
       });
     }
   }
@@ -90,20 +93,19 @@ class _PopupSettingsFieldState extends State<PopupSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.enabled
+      onTap: widget.enabled && _hasValue
           ? () => _popupMenuState.currentState?.showButtonMenu()
           : null,
       child: Row(
         children: [
-          Expanded(
-            child: widget.settingsField,
-          ),
-          PopupMenuButton(
-            key: _popupMenuState,
-            itemBuilder: (context) => _menuItems(),
-            onSelected: _setValue,
-            enabled: widget.enabled,
-          ),
+          Expanded(child: widget.settingsField),
+          if (_hasValue)
+            PopupMenuButton(
+              key: _popupMenuState,
+              itemBuilder: (context) => _menuItems(),
+              onSelected: _setValue,
+              enabled: widget.enabled,
+            ),
         ],
       ),
     );

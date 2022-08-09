@@ -6,13 +6,11 @@ import 'package:sp_settings/src/fields/settings_field.dart';
 class CheckboxSettingsField extends StatefulWidget {
   /// Create a new [CheckboxSettingsField] given a base [settingsField] and
   /// [prefKey].
-  const CheckboxSettingsField(
-    this.settingsField, {
+  const CheckboxSettingsField(this.settingsField, {
     super.key,
     required this.prefKey,
     this.enabled = true,
     this.initialValue = false,
-    this.tristate = false,
     this.onChanged,
   });
 
@@ -26,60 +24,43 @@ class CheckboxSettingsField extends StatefulWidget {
   final bool enabled;
 
   /// Initial value to set.
-  final bool? initialValue;
-
-  /// Support three states as opposed to only two.
-  final bool tristate;
+  final bool initialValue;
 
   /// Callback for when selection changes.
-  final void Function(bool? value)? onChanged;
+  final void Function(bool value)? onChanged;
 
   @override
   State<CheckboxSettingsField> createState() => _CheckboxSettingsFieldState();
 }
 
 class _CheckboxSettingsFieldState extends State<CheckboxSettingsField> {
+  var _hasValue = false;
   late var _currentValue = widget.initialValue;
 
   /// Retrieve [_currentValue] and set the state.
   Future<void> _updateValue() async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    final newValue = sharedPrefs.getBool(widget.prefKey);
-    if (newValue != _currentValue) {
+    final newValue = sharedPrefs.getBool(widget.prefKey) ?? widget.initialValue;
+    if (newValue != _currentValue || !_hasValue) {
       setState(() {
         _currentValue = newValue;
+        _hasValue = true;
       });
     }
   }
 
   /// Store [newValue] and set the state.
   Future<void> _setValue(bool? newValue) async {
+    if (newValue == null) return;
+
     final sharedPrefs = await SharedPreferences.getInstance();
-    if (newValue == null) {
-      await sharedPrefs.remove(widget.prefKey);
-    } else {
-      await sharedPrefs.setBool(widget.prefKey, newValue);
-    }
+    await sharedPrefs.setBool(widget.prefKey, newValue);
     setState(() {
       _currentValue = newValue;
+      _hasValue = true;
     });
 
     widget.onChanged?.call(newValue);
-  }
-
-  /// Return the next value that would be given for a tristate [Checkbox] given
-  /// a [current] value.
-  bool? _getNextTristate(bool? current) {
-    switch (current) {
-      case null:
-        return false;
-      case false:
-        return true;
-      case true:
-        return null;
-      default:
-        return null;
-    }
   }
 
   @override
@@ -91,19 +72,16 @@ class _CheckboxSettingsFieldState extends State<CheckboxSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.enabled
-          ? () => _setValue(_getNextTristate(_currentValue))
-          : null,
+      onTap:
+      widget.enabled && _hasValue ? () => _setValue(!_currentValue) : null,
       child: Row(
         children: [
-          Expanded(
-            child: widget.settingsField,
-          ),
-          Checkbox(
-            value: _currentValue,
-            onChanged: widget.enabled ? _setValue : null,
-            tristate: widget.tristate,
-          ),
+          Expanded(child: widget.settingsField),
+          if (_hasValue)
+            Checkbox(
+              value: _currentValue,
+              onChanged: widget.enabled ? _setValue : null,
+            ),
         ],
       ),
     );

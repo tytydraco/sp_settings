@@ -83,15 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Lemon': 'l',
                   'Strawberry': 's',
                 },
+                initialValue: 'null',
               ),
               const CheckboxSettingsField(
                 SettingsField(
-                  title: 'Tristate checkbox',
-                  description: 'This has three options to choose from.',
-                  icon: Icons.indeterminate_check_box,
+                  title: 'Checkbox',
+                  description: 'This has two options to choose from.',
+                  icon: Icons.check_box_outline_blank,
                 ),
-                tristate: true,
-                prefKey: 'tristate2',
+                prefKey: 'checkbox',
               ),
             ]),
           )

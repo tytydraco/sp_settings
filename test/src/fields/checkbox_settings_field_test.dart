@@ -125,44 +125,6 @@ void main() {
       );
     });
 
-    testWidgets('SharedPreferences changed with tristate',
-        (widgetTester) async {
-      SharedPreferences.setMockInitialValues({'example': false});
-
-      await widgetTester.pumpWidget(
-        const Material(
-          child: MaterialApp(
-            home: CheckboxSettingsField(
-              testSettingsField,
-              tristate: true,
-              prefKey: 'example',
-            ),
-          ),
-        ),
-      );
-
-      expect(
-        (await SharedPreferences.getInstance()).getBool('example'),
-        isFalse,
-      );
-
-      await widgetTester.tap(find.byType(Checkbox));
-      await widgetTester.pumpAndSettle();
-
-      expect(
-        (await SharedPreferences.getInstance()).getBool('example'),
-        isTrue,
-      );
-
-      await widgetTester.tap(find.byType(Checkbox));
-      await widgetTester.pumpAndSettle();
-
-      expect(
-        (await SharedPreferences.getInstance()).getBool('example'),
-        isNull,
-      );
-    });
-
     testWidgets('Checkbox state changed when disabled', (widgetTester) async {
       SharedPreferences.setMockInitialValues({'example': false});
 

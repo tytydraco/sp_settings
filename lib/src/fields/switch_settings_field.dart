@@ -35,15 +35,17 @@ class SwitchSettingsField extends StatefulWidget {
 }
 
 class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
+  var _hasValue = false;
   late var _currentValue = widget.initialValue;
 
   /// Retrieve [_currentValue] and set the state.
   Future<void> _updateValue() async {
     final sharedPrefs = await SharedPreferences.getInstance();
-    final newValue = sharedPrefs.getBool(widget.prefKey);
-    if (newValue != _currentValue && newValue != null) {
+    final newValue = sharedPrefs.getBool(widget.prefKey) ?? widget.initialValue;
+    if (newValue != _currentValue || !_hasValue) {
       setState(() {
         _currentValue = newValue;
+        _hasValue = true;
       });
     }
   }
@@ -68,16 +70,16 @@ class _SwitchSettingsFieldState extends State<SwitchSettingsField> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.enabled ? () => _setValue(!_currentValue) : null,
+      onTap:
+          widget.enabled && _hasValue ? () => _setValue(!_currentValue) : null,
       child: Row(
         children: [
-          Expanded(
-            child: widget.settingsField,
-          ),
-          Switch(
-            value: _currentValue,
-            onChanged: widget.enabled ? _setValue : null,
-          ),
+          Expanded(child: widget.settingsField),
+          if (_hasValue)
+            Switch(
+              value: _currentValue,
+              onChanged: widget.enabled ? _setValue : null,
+            ),
         ],
       ),
     );
