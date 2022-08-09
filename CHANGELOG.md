@@ -1,3 +1,8 @@
+## 1.1.0
+
+* Remove tristate checkbox
+* Fix all values defaulting to their initial value on app start
+
 ## 1.0.8
 
 * Proper package structure
